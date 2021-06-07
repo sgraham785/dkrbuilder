@@ -1,0 +1,56 @@
+version: 0.1
+
+workers: 10
+
+images:
+  centos:
+    7.6:
+      build:
+        context: ./dir
+        dockerfile: /path/to/Dockerfile
+        args:
+          centos-buildno: 1
+      
+      elixir:
+        1.8:
+          build:
+            context: ./dir
+            dockerfile: /path/to/Dockerfile
+            args:
+              elixir-buildno: 1
+      
+      maven:
+        latest:
+          build:
+            context: ./dir
+            dockerfile: /path/to/Dockerfile
+            args:
+              maven-buildno: 1
+        1.9:
+          build:
+            context: ./dir
+            dockerfile: /path/to/Dockerfile
+            args:
+              maven-buildno: 2
+      nginx:
+        1.15.9:
+          build:
+            context: ./dir
+            dockerfile: /path/to/Dockerfile
+            args:
+              buildno: 1
+    7.8:
+      build:
+        context: ./dir
+        dockerfile: /path/to/Dockerfile
+        args:
+          buildno: 1
+      elixir: 
+        - 1.9
+        - 1.10
+        - 1.11
+    dependents:
+      - repo: authoring
+        branch: develop
+      - repo: caws
+        branch: develop
